@@ -30,7 +30,7 @@ function TreeCombos(options) {
       destination: null,
       level: 0,
       mode:"bottom",
-      select_text:"Elige"
+      select_text:"Bitte wählen"
     };
     this._current_level = null;
     this._select = null;
@@ -83,6 +83,11 @@ TreeCombos.prototype.update = function() {
   var kk = tmp.children('li').length;
   if (kk < 1) {
     this.destroyChilds(true);
+    //console.log('iidd 02: ' + this._select.attr('value'));
+    $('#iiddhref').attr('style', 'display: inline-block;');
+    $('#iiddhref').attr('href', $('#IIDD'+this._select.attr('value')).children(":first").attr('href'));
+    //$('#iidd'+this._select.attr('value')).firstChild.attr('href');
+    //console.log('tester: ' + $('#IIDD'+this._select.attr('value')).children(":first").attr('href'));
   } else {
     if (this._next == null) {
       this._next = new TreeCombos({
